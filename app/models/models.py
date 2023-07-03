@@ -11,7 +11,9 @@ db_connection_string = (
     + os.getenv("DB_USER")
     + ":"
     + os.getenv("DB_PASS")
-    + "@aws-sa-east-1.connect.psdb.cloud/motor"
+    + "@"
+    + os.getenv("DB_HOST")
+    + os.getenv("DB_DATABASE")
 )
 
 engine = create_engine(
@@ -40,7 +42,7 @@ def add_data_to_db(data):
         values = data
 
         query = text(
-            f"INSERT INTO sensors ({query_columns.rstrip(',')}) VALUES ({query_values.rstrip(',')})"
+            f"INSERT INTO sensores ({query_columns.rstrip(',')}) VALUES ({query_values.rstrip(',')})"
         )
 
         conn.execute(query, values)
