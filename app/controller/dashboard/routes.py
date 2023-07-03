@@ -17,6 +17,5 @@ def get_data():
 @bp.route("/esp32-data", methods=["POST"])
 def esp32_data():
     data = request.json
-    print(data)
-    # add_data_to_db({"rpm": 950.5, "lambda": 502.33})
+    add_data_to_db(data)
     return Response(status=200)
