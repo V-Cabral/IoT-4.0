@@ -17,7 +17,7 @@ engine = create_engine(
 
 def load_data():
     with engine.connect() as conn:
-        sensors = conn.execute(text("SELECT * FROM sensors ORDER BY id DESC LIMIT 20"))
+        sensors = conn.execute(text("SELECT * FROM sensores ORDER BY id DESC LIMIT 20"))
 
         columns = sensors.keys()
 

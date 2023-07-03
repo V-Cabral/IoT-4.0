@@ -18,5 +18,5 @@ def get_data():
 def esp32_data():
     data = request.json
     print(data)
-    # add_data_to_db({"rpm": 1000})
+    # add_data_to_db({"sensor_rpm": 950.5, "sensor_lambda": 502.33})
     return Response(status=200)
