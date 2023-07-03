@@ -32,7 +32,7 @@ document
       });
   });
 
-let lambda_chart_ctx = plotLambdaData({ id: null, rpm: null });
+let lambda_chart_ctx = plotLambdaData({ id: null, lambda: null });
 document
   .getElementById("ButtonFetchLambda")
   .addEventListener("click", function () {
@@ -42,7 +42,7 @@ document
       })
       .then(function (data) {
         console.log(data);
-        lambda_chart_ctx.data.datasets[0].data = data.rpm;
+        lambda_chart_ctx.data.datasets[0].data = data.lambda;
         lambda_chart_ctx.data.labels = data.id;
         lambda_chart_ctx.update();
       });
