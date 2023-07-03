@@ -82,7 +82,7 @@ function plotLambdaData(data) {
       datasets: [
         {
           label: "Mistura ar/combustível",
-          data: data.rpm,
+          data: data.lambda,
           borderWidth: 1,
           borderColor: ["#7380ec"],
           backgroundColor: ["#8489c833"],
