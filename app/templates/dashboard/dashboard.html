@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block content %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/dashboard.css') }}"
+/>
+
+<section class="dashboard" id="dashboard-section">
+  <div class="card">
+    <h2>RPM</h2>
+    <canvas id="RpmChart"></canvas>
+    <button id="ButtonFetchRpm">Plotar Dados de RPM</button>
+  </div>
+
+  <div class="card">
+    <h2>Mistura Ar/Combustível</h2>
+    <canvas id="LambdaChart"></canvas>
+    <button id="ButtonFetchLambda">Plotar Dados de Mistura</button>
+  </div>
+
+  <div class="card">
+    <h2>Mistura Ar/Combustível</h2>
+    <canvas id="LambdaChart"></canvas>
+    <button id="ButtonFetchLambda">Plotar Dados de Mistura</button>
+  </div>
+</section>
+
+<div class="button-download">
+  <button id="download">
+    <span class="material-symbols-sharp"> download </span>Download
+  </button>
+</div>
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='js/plot.bundle.js') }}"
+></script>
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='js/download.bundle.js') }}"
+></script>
+
+{% endblock %}

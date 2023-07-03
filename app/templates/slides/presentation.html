@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/slides.css')}}"
+/>
+
+<div class="presentation-area">
+  <section id="slides">{% include 'slides/slides.html' %}</section>
+
+  <div class="footer" id="slide-footer">
+    <div class="navigate-numbers">
+      <span id="actual-slide"></span> de
+      <span id="total-slide"></span>
+    </div>
+
+    <div class="navigate">
+      <span class="material-symbols-sharp" id="navigate_before">
+        navigate_before
+      </span>
+      <span class="material-symbols-sharp" id="navigate_next">
+        navigate_next
+      </span>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/slides.bundle.js') }}"></script>
+
+{% endblock %}

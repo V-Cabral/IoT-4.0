@@ -1,0 +1,9 @@
+:root {
+  --color-primary: #7380ec;
+  --color-background: #f6f6f9;
+  --color-info-dark: #7d8da1;
+  --color-dark: #363949;
+  --color-dark-variant: #677483;
+  --color-light: rgba(132, 139, 200, 0.18);
+  --color-light-variant: rgba(61, 58, 102, 0.18);
+}

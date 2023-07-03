@@ -1,0 +1,84 @@
+@import url("colors.css");
+
+section.dashboard {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+}
+
+section .card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 5px 15px 30px var(--color-light);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+
+.card h2 {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.card button {
+  background: var(--color-light);
+  border: 0;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: var(--color-primary);
+  font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  text-decoration: none #d1d5db solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.card:hover button {
+  background-color: var(--color-light-variant);
+}
+
+.card:focus button {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.card:focus-visible button {
+  box-shadow: none;
+}
+
+.button-download {
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.button-download #download {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: var(--color-primary);
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 100%;
+}
+
+.button-download #download:hover {
+  background-color: RoyalBlue;
+}

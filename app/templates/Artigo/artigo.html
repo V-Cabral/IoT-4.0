@@ -1,0 +1,83 @@
+{% extends 'base.html' %} {% block content %}
+
+<section class="article visible" id="article-section">
+  <h1 class="title shadow">
+    Implementação de um dispositivo leitor de rotação e mistura ar/combustível
+    digital integrado a WEB para uso em motores
+  </h1>
+  <h2 class="quote">Resumo</h2>
+  <p class="quote">
+    Este artigo tem por objetivo realizar o estudo e implementação de um
+    dispositivo que realiza a leitura e armazenamento dos sinais de rotação e
+    mistura ar combustível de motores. Para isso, foram utilizados os sensores
+    Hall e Sonda Lambda narrow band presentes em um sistema de injeção
+    eletrônica, para realizar o monitoramento tanto de forma síncrona através de
+    uma interface visual desenvolvida em hardware para o usuário, como também de
+    forma assíncrona, onde os dados são coletados e enviados a um servidor web a
+    partir de conexão WiFi e protocolo MQTT durante o período de trabalho do
+    motor. Para esta implementação foi utilizado um microcontrolador ESP de
+    baixo custo com sistema integrado de WiFi, possibilitando a identificação de
+    um possível mal funcionamento do sistema de injeção eletrônica, ou mesmo,
+    auxiliar no acerto de um sistema de injeção mecânico utilizando carburador.
+  </p>
+
+  <h2>Introdução</h2>
+  <p>
+    Nas últimas décadas, temos visto um crescimento populacional de carros nas
+    ruas. Paralelamente a esse crescimento, observa-se uma exigência por parte
+    dos clientes por cada vez mais tecnologia e equipamentos eletrônicos
+    integrados aos veículos.
+  </p>
+  <p>
+    Frente às exigências de mercado, diversas fabricantes de carros já incluem
+    um número significativo de circuitos integrados em seus veículos. No
+    contexto de evolução tecnológica, temos em meados de 1960 a introdução da
+    injeção eletrônica no mercado. A Bosch foi a primeira fabricante a realizar
+    a produção desse dispositivo em larga escala para veículos de passageiros.
+  </p>
+  <p>
+    Desde então, a injeção eletrônica continuou a evoluir e a se aperfeiçoar.
+    Novas tecnologias e recursos foram incorporados aos sistemas de injeção
+    eletrônica, como sensores mais avançados, controle mais preciso e sistemas
+    de diagnóstico aprimorados. Dentre esses avanços, podemos destacar os
+    sensores de Sonda Lambda e Hall.
+  </p>
+  <p>
+    O sensor Sonda Lambda é um componente essencial nos veículos equipados com
+    injeção eletrônica. Ele foi desenvolvido para medir a quantidade de oxigênio
+    presente nos gases de escape e fornecer informações ao sistema de
+    gerenciamento do motor.
+  </p>
+  <p>
+    A Sonda Lambda é composta por uma haste metálica, geralmente feita de
+    zircônia, com revestimentos cerâmicos isolantes e eletrodos internos. A sua
+    atuação baseia-se na alteração das propriedades da cerâmica a altas
+    temperaturas permitindo a difusão do oxigênio do ar. Geralmente, este sensor
+    é instalado no coletor de escape próximo ao motor e antes do catalisador.
+    Dessa forma, o sensor controla a mistura entre combustível e oxigênio.
+  </p>
+  <p>
+    Já o sensor Hall é um dispositivo que detecta a presença e a intensidade de
+    campos magnéticos. Seu funcionamento é baseado no princípio do Efeito Hall,
+    que estabelece que quando um campo magnético perpendicular ao fluxo de
+    corrente é aplicado sobre um condutor, ocorre uma diferença de potencial sob
+    o condutor, conhecida como Tensão de Hall. Essa tensão possui direção
+    perpendicular ao campo magnético e à corrente, e é proporcional à densidade
+    de fluxo magnético e à corrente.
+  </p>
+  <p>
+    No contexto automotivo, o sensor Hall é frequentemente usado para detectar a
+    posição do virabrequim. Essa informação é importante para o sistema de
+    gerenciamento do motor, pois permite o sincronismo preciso da injeção de
+    combustível e do controle de ignição.
+  </p>
+  <p>
+    O sensor Hall é composto por uma placa de material semicondutor, como
+    silício, com uma fina camada de material sensível ao campo magnético. Dessa
+    forma, o sensor é capaz de detectar a presença de campo magnético e gerar
+    uma tensão de Hall em sua saída, proporcional a intensidade do campo
+    magnético.
+  </p>
+</section>
+
+{% endblock %}

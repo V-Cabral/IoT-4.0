@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+@import url("colors.css");
+
+:root {
+  --aside-size: 15vw;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--color-background);
+  width: 100vw;
+  height: 100vh;
+}
+
+.base-grid {
+  display: grid;
+  grid-template-columns: var(--aside-size) auto 10vw;
+  width: 100vw;
+  height: 100vh;
+  gap: 1rem;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.8rem;
+}
+
+h2 h3 {
+  font-size: 1.6rem;
+}
+
+p {
+  color: var(--color-dark-variant);
+  font-size: 1.2rem;
+}
+
+b {
+  color: var(--color-dark);
+}
+
+/* ======================= Sidebar ======================= */
+
+aside {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+
+aside a:hover {
+  color: var(--color-primary);
+  transition: all 500ms ease;
+  margin-left: 0.5rem;
+}
+
+aside h3 {
+  font-weight: 500;
+}
+
+aside .fixed {
+  position: fixed;
+  left: calc(var(--aside-size) - var(--aside-size) / 2);
+  transform: translateX(-50%);
+  width: var(--aside-size);
+}
+
+aside a {
+  text-decoration: none;
+  color: var(--color-info-dark);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  height: 2rem;
+  transition: all 300ms ease;
+}
+
+aside a.active {
+  background: var(--color-light);
+  color: var(--color-primary);
+  margin-left: 0;
+}
+
+aside a.active:before {
+  content: "";
+  width: 6px;
+  height: 100%;
+  background: var(--color-primary);
+}
+
+aside img {
+  height: 6rem;
+  width: 6rem;
+}
+
+/* ======================= Content ======================= */
+main {
+  padding-top: 2rem;
+}
