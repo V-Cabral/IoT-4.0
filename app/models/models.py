@@ -1,12 +1,16 @@
 from sqlalchemy import create_engine, text
+from dotenv import load_dotenv
+import os
 from app import app
+
+load_dotenv()
 
 # Database link: https://planetscale.com/
 db_connection_string = (
     "mysql+pymysql://"
-    + app.config["DB_USER"]
+    + os.getenv("DB_USER")
     + ":"
-    + app.config["DB_PASS"]
+    + os.getenv("DB_PASS")
     + "@aws-sa-east-1.connect.psdb.cloud/motor"
 )
 
