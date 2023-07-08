@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
+from datetime import datetime
 import os
 from app import app
 
@@ -21,9 +22,16 @@ engine = create_engine(
 )
 
 
-def load_data():
+def load_data(date=None):
     with engine.connect() as conn:
-        sensors = conn.execute(text("SELECT * FROM sensores ORDER BY id DESC LIMIT 20"))
+        if date:
+            query = text(
+                f"SELECT * FROM sensores WHERE DATE(date_time) = DATE('{date}')"
+            )
+        else:
+            query = text(f"SELECT * FROM sensores ORDER BY id DESC LIMIT 20")
+
+        sensors = conn.execute(query)
 
         columns = sensors.keys()
 
@@ -37,6 +45,8 @@ def load_data():
 
 def add_data_to_db(data):
     with engine.connect() as conn:
+        data["date_time"] = datetime.now()
+
         query_columns = ",".join(data.keys())
         query_values = ",".join([f":{column}" for column in data.keys()])
         values = data

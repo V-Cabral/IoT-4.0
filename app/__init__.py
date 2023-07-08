@@ -1,7 +1,7 @@
 from flask import Flask
 
 app = Flask(__name__)
-app.config.from_object("config.config.ProductionConfig")
+app.config.from_object("config.config.DevelopmentConfig")
 
 # Blueprints register
 from app.controller.powerpoint import bp as powerpoint_bp

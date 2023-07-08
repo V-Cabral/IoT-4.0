@@ -18,27 +18,29 @@
     <button id="ButtonFetchLambda">Plotar Dados de Mistura</button>
   </div>
 
-  <div class="card">
-    <h2>Mistura Ar/Combustível</h2>
-    <canvas id="LambdaChart"></canvas>
-    <button id="ButtonFetchLambda">Plotar Dados de Mistura</button>
+  <div class="wrapper">
+    <h2>Baixe os dados do dia</h2>
+    <div class="date">
+      <input type="date" id="date" />
+    </div>
   </div>
+
+  <div class="two-columns">
+    <div class="button-download">
+      <button id="download">
+        <span class="material-symbols-sharp"> download </span>Download
+      </button>
+    </div>
+  </div>
+
+  <script
+    type="text/javascript"
+    src="{{ url_for('static', filename='js/plot.bundle.js') }}"
+  ></script>
+
+  <script
+    type="text/javascript"
+    src="{{ url_for('static', filename='js/download.bundle.js') }}"
+  ></script>
 </section>
-
-<div class="button-download">
-  <button id="download">
-    <span class="material-symbols-sharp"> download </span>Download
-  </button>
-</div>
-
-<script
-  type="text/javascript"
-  src="{{ url_for('static', filename='js/plot.bundle.js') }}"
-></script>
-
-<script
-  type="text/javascript"
-  src="{{ url_for('static', filename='js/download.bundle.js') }}"
-></script>
-
 {% endblock %}

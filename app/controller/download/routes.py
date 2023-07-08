@@ -1,13 +1,15 @@
 from app.controller.download import bp
 from app.models.models import load_data
-from flask import Response
+from flask import Response, request
 import csv
 import io
 
 
-@bp.route("/download")
-def dowload_csv_file():
-    data = load_data()
+@bp.route("/download", methods=["POST", "GET"])
+def download_csv_file():
+    date = request.json.get("date")
+
+    data = load_data(date)
     title = list(data.keys())
     rows = zip(*data.values())
 
