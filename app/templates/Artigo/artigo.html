@@ -14,11 +14,11 @@
     eletrônica, para realizar o monitoramento tanto de forma síncrona através de
     uma interface visual desenvolvida em hardware para o usuário, como também de
     forma assíncrona, onde os dados são coletados e enviados a um servidor web a
-    partir de conexão WiFi e protocolo MQTT durante o período de trabalho do
+    partir de conexão WiFi e protocolo HTTPS durante o período de trabalho do
     motor. Para esta implementação foi utilizado um microcontrolador ESP de
-    baixo custo com sistema integrado de WiFi, possibilitando a identificação de
-    um possível mal funcionamento do sistema de injeção eletrônica, ou mesmo,
-    auxiliar no acerto de um sistema de injeção mecânico utilizando carburador.
+    baixo custo com sistema integrado de Wi-Fi, possibilitando a identificação
+    de um possível mau funcionamento do sistema de injeção eletrônica, ou mesmo,
+    auxiliar no acerto de um sistema de injeção mecânico utilizando carburador
   </p>
 
   <h2>Introdução</h2>
@@ -26,12 +26,12 @@
     Nas últimas décadas, temos visto um crescimento populacional de carros nas
     ruas. Paralelamente a esse crescimento, observa-se uma exigência por parte
     dos clientes por cada vez mais tecnologia e equipamentos eletrônicos
-    integrados aos veículos.
+    integrados aos veículos. Frente às exigências de mercado, diversas
+    fabricantes de carros já incluem um número significativo de circuitos
+    integrados em seus veículos.
   </p>
   <p>
-    Frente às exigências de mercado, diversas fabricantes de carros já incluem
-    um número significativo de circuitos integrados em seus veículos. No
-    contexto de evolução tecnológica, temos em meados de 1960 a introdução da
+    No contexto de evolução tecnológica, temos em meados de 1960 a introdução da
     injeção eletrônica no mercado. A Bosch foi a primeira fabricante a realizar
     a produção desse dispositivo em larga escala para veículos de passageiros.
   </p>
@@ -49,21 +49,29 @@
     gerenciamento do motor.
   </p>
   <p>
-    A Sonda Lambda é composta por uma haste metálica, geralmente feita de
-    zircônia, com revestimentos cerâmicos isolantes e eletrodos internos. A sua
-    atuação baseia-se na alteração das propriedades da cerâmica a altas
-    temperaturas permitindo a difusão do oxigênio do ar. Geralmente, este sensor
-    é instalado no coletor de escape próximo ao motor e antes do catalisador.
-    Dessa forma, o sensor controla a mistura entre combustível e oxigênio.
+    O sensor Sonda Lambda é um componente essencial nos veículos equipados com
+    injeção eletrônica. Ele foi desenvolvido para medir a quantidade de oxigênio
+    presente nos gases de escape e fornecer informações ao sistema de
+    gerenciamento do motor [1]. Este sensor é composto por uma haste metálica,
+    geralmente feita de zircônia, com revestimentos cerâmicos isolantes e
+    eletrodos internos [2]. A sua atuação baseia-se na alteração das
+    propriedades da cerâmica a altas temperaturas permitindo a difusão do
+    oxigênio do ar [1]. Geralmente, este sensor é instalado no coletor de escape
+    próximo ao motor e antes do catalisador. Dessa forma, o sensor controla a
+    mistura entre combustível e oxigênio.
   </p>
   <p>
     Já o sensor Hall é um dispositivo que detecta a presença e a intensidade de
     campos magnéticos. Seu funcionamento é baseado no princípio do Efeito Hall,
     que estabelece que quando um campo magnético perpendicular ao fluxo de
     corrente é aplicado sobre um condutor, ocorre uma diferença de potencial sob
-    o condutor, conhecida como Tensão de Hall. Essa tensão possui direção
-    perpendicular ao campo magnético e à corrente, e é proporcional à densidade
-    de fluxo magnético e à corrente.
+    o condutor, conhecida como Tensão de Hall [3]. Essa tensão possui direção
+    perpendicular ao campo magnético e a corrente, e é proporcional à densidade
+    de fluxo magnético e a corrente. Este sensor é composto por uma placa de
+    material semicondutor, como silício, com uma fina camada de material
+    sensível ao campo magnético. Dessa forma, o sensor é capaz de detectar a
+    presença de campo magnético e gerar uma tensão de Hall em sua saída,
+    proporcional a intensidade do campo magnético [4].
   </p>
   <p>
     No contexto automotivo, o sensor Hall é frequentemente usado para detectar a
@@ -72,11 +80,209 @@
     combustível e do controle de ignição.
   </p>
   <p>
-    O sensor Hall é composto por uma placa de material semicondutor, como
-    silício, com uma fina camada de material sensível ao campo magnético. Dessa
-    forma, o sensor é capaz de detectar a presença de campo magnético e gerar
-    uma tensão de Hall em sua saída, proporcional a intensidade do campo
-    magnético.
+    A sonda lambda desempenha um papel crucial na identificação de problemas,
+    como falhas na ignição, vazamentos no sistema de escape e sensores de massa
+    de ar defeituosos, entre outros. Um mau funcionamento desse sensor pode
+    levar a um aumento nas emissões de poluentes, comprometendo o desempenho e a
+    eficiência do motor
+  </p>
+  <p>
+    Por sua vez, o sensor Hall, que mede as rotações por minutos do motor (RPM),
+    permite monitorar e detectar falhas na sincronização do motor, problemas nas
+    velas de ignição, falhas nos injetores de combustível e desgaste em
+    componentes mecânicos. Um mau funcionamento desse sensor pode resultar em
+    perda de potência, instabilidade no motor e até mesmo na paralisação do
+    veículo.
+  </p>
+  <p>
+    Em conjunto, esses sensores são fundamentais para garantir o bom
+    funcionamento do sistema de injeção eletrônica, otimizar o desempenho do
+    motor e reduzir o impacto ambiental através da redução das emissões de
+    poluentes. A detecção e correção de problemas relacionados a esses sensores
+    podem contribuir para um funcionamento mais eficiente e confiável do
+    veículo, além de promover economia de combustível e prolongar a vida útil do
+    motor.
+  </p>
+  <p>
+    Portanto, é evidente que a integridade e o correto funcionamento desses
+    sensores são essenciais para garantir um desempenho otimizado, menor impacto
+    ambiental e maior confiabilidade do veículo. A manutenção e o diagnóstico
+    preciso desses componentes são de extrema importância para evitar problemas
+    mais graves e garantir uma experiência de condução segura e eficiente.
+  </p>
+  <h3>Estrutura do Artigo</h3>
+  <p>
+    O artigo está estruturado da seguinte maneira: na Seção II, é fornecida uma
+    descrição geral do projeto, incluindo os componentes de hardware utilizados
+    e a implementação do servidor remoto. Em seguida, na Seção III, são
+    apresentados os resultados obtidos com o projeto. Por fim, na seção IV, são
+    apresentadas as principais conclusões do artigo.
+  </p>
+  <p>
+    Na Seção II, é abordada uma descrição detalhada do projeto, destacando os
+    principais componentes de hardware utilizados e fornecendo informações sobre
+    a implementação do servidor remoto. Essa seção fornece uma compreensão
+    abrangente do projeto e de suas características técnicas.
+  </p>
+
+  <h2>MATERIAL E MÉTODOS</h2>
+  <h3>Descrição Geral do Projeto</h3>
+  <p>
+    O objetivo deste projeto é monitorar estímulos físicos ocorridos dentro de
+    um motor automotivo e convertê-los em sinais elétricos. Isso nos permitirá
+    acompanhar variáveis essenciais para o funcionamento do motor e auxiliar no
+    acerto do sistema de injeção mecânica ou na identificação de algum mal
+    funcionamento da injeção eletrônica. Para isso, são utilizados sensores de
+    Sonda Lambda e sensor Hall, que detectam estímulos físicos e os convertem em
+    níveis de tensão analógica
+  </p>
+  <p>
+    Em seguida, um microcontrolador com acesso Wi-Fi é utilizado para se
+    conectar a uma rede e enviar os sinais adquiridos pelos sensores para um
+    servidor web, utilizando o protocolo de comunicação HTTPS. Além disso, o
+    microcontrolador é responsável por implementar uma interface em tempo real,
+    utilizando LEDs, para indicar ao usuário se a mistura ar/combustível está
+    pobre, rica ou ideal. Em seguida, um servidor web armazena as informações
+    enviadas pelo microcontrolador em um banco de dados SQL, permitindo a
+    criação de um dashboard para que o usuário possa baixar ou visualizar os
+    dados quando necessário. A Figura 1 ilustra o fluxo descrito anteriormente,
+    mostrando como os sensores adquirem os sinais, os enviam para o
+    microcontrolador, que por sua vez os encaminha para o servidor, e,
+    finalmente, o usuário pode monitorar as informações provenientes dos
+    sensores.
+  </p>
+  <img
+    src="{{ url_for('static', filename='/images/diagrama_de_blocos.jpeg')}}"
+  />
+
+  <h3>Hardware</h3>
+  <p>
+    O hardware deste projeto foi desenvolvido utilizando o microcontrolador
+    ESP32. O ESP32 é uma solução de microcontrolador versátil e acessível,
+    projetada para oferecer baixo consumo de energia e ótimo desempenho. Esse
+    microcontrolador incorpora um processador de núcleo duplo, proporcionando
+    maior capacidade de processamento e a capacidade de executar tarefas
+    simultaneamente. Também, o ESP32 possui conectividade integrada, incluindo
+    Wi-Fi e Bluetooth, permitindo a comunicação sem fio com outros dispositivos.
+    A Figura 2 mostra a imagem do microcontrolador empregado no projeto.
+  </p>
+
+  <img src="{{ url_for('static', filename='/images/esp32.jpg')}}" />
+  <p>
+    Além disso, o projeto também conta com um sistema de visualização por meio
+    de LEDs, que permite a visualização em tempo real da condição da mistura
+    ar/combustível, indicando se está pobre, rica ou ideal. Essa funcionalidade
+    oferece uma forma intuitiva e instantânea de monitorar o estado da mistura,
+    facilitando o ajuste e a otimização do sistema de injeção eletrônica. Os
+    LEDs fornecem uma representação visual clara e fácil de interpretar,
+    proporcionando uma experiência visual eficiente e permitindo ao usuário
+    tomar as medidas adequadas com base nas informações fornecidas pelos
+    sensores.
+  </p>
+  <p>
+    É importante observar que, para fins de demonstração do projeto, foram
+    utilizados potenciômetros que simulam os níveis de tensão de saída dos
+    sensores de sonda lambda e RPM. Essa abordagem permite realizar a
+    demonstração do funcionamento do projeto de forma prática e interativa em
+    sala de aula. Os potenciômetros possibilitam ajustar os valores de tensão de
+    saída para diferentes cenários, proporcionando uma representação visual dos
+    sinais gerados pelos sensores reais.
+  </p>
+  <h3>Servidor web</h3>
+  <p>
+    Para a criação do servidor web, optamos por utilizar o microframework Flask,
+    um framework web leve e flexível escrito em Python. O Flask é amplamente
+    reconhecido por sua simplicidade e facilidade de uso, sendo ideal para o
+    desenvolvimento de aplicativos web rápidos e eficientes, seguindo a
+    abordagem do padrão arquitetural Model-View-Controller (MVC).
+  </p>
+  <p>
+    Além de sua agilidade na criação de aplicações web, o Flask também oferece
+    um ecossistema robusto de extensões, que fornecem recursos adicionais para
+    melhorar a funcionalidade do servidor. Essas extensões abrangem desde
+    autenticação de usuários até suporte a bancos de dados, manipulação de
+    formulários e integração com serviços externos.
+  </p>
+  <p>
+    Para armazenar os dados provenientes do hardware, criamos um banco de dados
+    na plataforma gratuita PlanetScale. Para acessar esse banco, estabelecemos
+    uma conexão segura por meio de um login e senha fornecidos pela PlanetScale.
+    Essa abordagem nos permite obter acesso direto aos dados e realizar
+    operações de gerenciamento de forma eficiente e eficaz. Optamos por utilizar
+    um banco de dados relacional, que é um tipo de sistema de gerenciamento de
+    banco de dados (SGBD) capaz de organizar os dados em tabelas estruturadas,
+    compostas por linhas (registros) e colunas (campos).
+  </p>
+  <p>
+    Por fim, foi desenvolvida uma interface intuitiva utilizando HTML, CSS e
+    JavaScript, permitindo que o usuário interaja de forma amigável e visualize
+    os dados armazenados no banco de dados de maneira eficiente. Através dessa
+    interface, é possível visualizar os dados em um gráfico de fácil
+    compreensão. Além disso, o usuário possui a opção de realizar o download dos
+    dados armazenados no banco de dados referentes a um dia específico. Essa
+    funcionalidade não apenas facilita uma análise mais aprofundada dos dados,
+    mas também permite o compartilhamento dessas informações com especialistas
+    para uma análise mais detalhada. Dessa forma, é possível obter insights
+    valiosos e aproveitar ao máximo os dados coletados.
+  </p>
+
+  <h2>Resultados</h2>
+  <p>
+    Como resultado, desenvolvemos uma página web, conforme mostrado na Figura 3,
+    que oferece recursos para visualização dos dados. Por meio dessa página, os
+    usuários têm a capacidade de visualizar os dados em um gráfico e também
+    podem selecionar um dia específico para baixar as informações dos sensores
+    referentes a esse dia. Essa funcionalidade permite uma análise mais
+    detalhada e aprofundada dos dados.
+  </p>
+  <img src="{{ url_for('static', filename='/images/page.jpeg')}}" />
+
+  <h3>Conclusão</h3>
+  <p>
+    Com base na proposta apresentada no artigo, foi desenvolvido um sistema
+    completo para o monitoramento de variáveis essenciais no controle de um
+    motor automotivo. O sistema foi projetado com o objetivo de coletar e
+    transmitir dados de forma precisa para um servidor remoto, proporcionando a
+    análise e o ajuste adequado do sistema de injeção eletrônica. Essa coleta de
+    dados não apenas pode resultar na redução das emissões de gases de efeito
+    estufa, mas também garante maior segurança e confiabilidade para o motor.
+  </p>
+  <p>
+    A implementação do monitoramento por meio do protocolo HTTPS mostrou-se
+    eficaz. No entanto, seria benéfico considerar a utilização do protocolo MQTT
+    em alguns casos, pois esse protocolo permite um uso mais eficiente da banda
+    de dados. Além disso, o projeto poderia ser facilmente expandido para
+    incluir o monitoramento de outras grandezas físicas do motor, o que
+    possibilitaria uma análise mais abrangente do seu estado com maior
+    segurança. Adicionalmente, seria interessante explorar o uso do protocolo
+    CAN para a comunicação entre a injeção eletrônica e o microcontrolador,
+    aproveitando melhor os sensores já existentes no veículo.
+  </p>
+  <p>
+    Os dados coletados também têm potencial para aplicação de técnicas de
+    aprendizado de máquina, permitindo inferências e análises além da capacidade
+    humana de percepção. Essa abordagem viabiliza a implementação de uma
+    manutenção preditiva do motor, contribuindo para um melhor desempenho e
+    prolongando sua vida útil.
+  </p>
+
+  <h3>Referências</h3>
+  <p>
+    [1] CRUZ, César Roberto. Desempenho de sondas Lambda no monitoramento de
+    motores do ciclo Otto alimentados por etanol e GNV. 2015.
+  </p>
+  <p>
+    [2] DE LIMA, Lutero Carmo et al. Construção e avaliação de um monitor de
+    combustão industrial. Revista Tecnologia, v. 28, n. 1, 2007.
+  </p>
+  <p>
+    [3] COLLOMB, David; LI, Penglei; BENDING, Simon. Frontiers of graphene-based
+    Hall-effect sensors. Journal of Physics: Condensed Matter, v. 33, n. 24, p.
+    243002, 2021.
+  </p>
+  <p>
+    [4] POPOVIC, R. S. Hall-effect devices. Sensors and Actuators, v. 17, n. ´
+    1-2, p. 39-53, 1989.
   </p>
 </section>
 
